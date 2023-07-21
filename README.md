@@ -1,1 +1,2 @@
 # MSA-P2
+Create a BMI calculator which can be used by anyone and users have the option to sign up and store their information and view past data about their original BMI scores. I have currently create a BMI.cs and BMIContext.cs in models. What else would I need to create in the Back-end?

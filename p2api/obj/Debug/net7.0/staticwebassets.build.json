@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "JP01G2sCmxwAQU1kKsmUOBmh2j4WP+gQAsitBT7SeNc=",
+  "Source": "p2api",
+  "BasePath": "_content/p2api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,67 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #778da9;
+}
+
+.navbar-logo {
+  width: 3rem;
+  height: auto;
+}
+
+.navbar-menu {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+.nav-button,
+.login-button {
+  font-size: 18px;
+  color: #e1e1e1; /* Change this color for text color */
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+}
+
+.nav-button:focus,
+.nav-button:hover,
+.login-button:focus,
+.login-button:hover {
+  color: #fff; /* Change this color for hover text color */
+}
+
+.nav-button:focus:after,
+.nav-button:hover:after,
+.login-button:focus:after,
+.login-button:hover:after {
+  width: 100%;
+  left: 0%;
+}
+
+.nav-button:after,
+.login-button:after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #fff; /* Change this color for underline color */
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}

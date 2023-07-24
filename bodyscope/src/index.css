@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Helvetica Light";
+  src: url("./font/HelveticaLt.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Helvetica Light";
+  background-color: #e0e1dd;
+  margin: 0;
+  padding: 0;
+}
+
+ 

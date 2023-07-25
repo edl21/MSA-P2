@@ -1,31 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import Button from '@mui/material/Button';
+import logo from '../assets/dblogo.png'; 
 import "./Navbar.css";
-import logo from "../assets/dblogo.png";
 
 const NavBar = () => {
   return (
-    <div className="navbar-container">
-      <img src={logo} alt="Logo" className="navbar-logo" />
-
-      <div className="navbar-menu">
-        <Link to="/" className="nav-link">
-          <button className="nav-button">Home</button>
+    <nav className="navbar-container">
+      <div className="navbar-left">
+        <img src={logo} alt="Logo" className="navbar-logo" />
+        <h1 className="navbar-title">BodyHub</h1>
+        <Link to="/" className="nav-button">
+          Home
         </Link>
-        <Link to="/bmi" className="nav-link">
-          <button className="nav-button">BMI</button>
-        </Link>
-        <Link to="/about" className="nav-link">
-          <button className="nav-button">About</button>
-        </Link>
-      </div>
-
-      <div>
-        <Link to="/login" className="nav-link">
-          <button className="login-button">Login</button>
+        {/* <Link to="/bmi" className="nav-button">
+          BMI
+        </Link> */}
+        <Link to="/about" className="nav-button">
+          About
         </Link>
       </div>
-    </div>
+
+      <div className="navbar-right">
+        <Link to="/signup" className="nav-button">
+          Sign Up
+        </Link>
+        <Link to="/login" className="nav-button">
+          Login
+        </Link>
+      </div>
+    </nav>
   );
 };
 

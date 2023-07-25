@@ -7,9 +7,9 @@
 
 body {
   font-family: "Helvetica Light";
-  background-color: #e0e1dd;
+  background: linear-gradient(to top left, #e0e1dd , #778da9 75%);
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  min-height: 100vh;
 }
-
- 

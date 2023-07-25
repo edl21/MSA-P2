@@ -1,18 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Home.css';  // Import your styles
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Home.css";
 
 const Home = () => {
-    return (
-        <div className="home-container">
-            <h1 className="home-title">Welcome to BodyHub</h1>
-            <h2 className="home-description">For all things body! Our goal is to lead you to a better future! Take your first step with us!</h2>
-            <Link to="/bmi">
-                <button className="home-button">Calculate your BMI</button>
-            </Link>
-        </div>
-    )
-}
+  return (
+    <div className="home-container">
+      <div className="left-container">
+        <h2 className="home-opener">Discover a New Approach to Health and Fitness</h2>
+        <p className="home-information">
+          Embark on your wellness journey with personalised insights, progress tracking, and nutritional guidance - all
+          completely free.
+        </p>
+        <p className="home-information">Ready to get started?</p>
+        <Link to="/bmi">
+          <button className="home-button">Click Here to Start</button>
+        </Link>
+      </div>
+
+      <div className="right-container">
+        <p>Some sort of image here later on</p>
+      </div>
+    </div>
+  );
+};
 
 export default Home;
-

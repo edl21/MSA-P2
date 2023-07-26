@@ -1,56 +1,63 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { TextField, Snackbar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./SignUpForm.css";
 
-const SignUpForm = () => {
-    const navigate = useNavigate();
-  
-    const [values, setValues] = useState({
-      firstName: "",
-      surname: "",
-      email: "",
-      password: "",
-      confirmPassword: ""
-    });
-  
-    const [open, setOpen] = useState(false);
-  
-    const handleChange = (prop) => (event) => {
-      setValues({ ...values, [prop]: event.target.value });
-    };
-  
-    const handleSubmit = (event) => {
-      event.preventDefault();
-  
-      // Email validation
-      const re = /\S+@\S+\.\S+/;
-      if (!re.test(values.email)) {
-        alert("Please enter a valid email");
-        return;
-      }
-  
-      // Password confirmation validation
-      if (values.password !== values.confirmPassword) {
-        alert("Passwords do not match");
-        return;
-      }
-  
-      setOpen(true);
-      setTimeout(() => {
-        setOpen(false);
-        navigate('/');
-      }, 2000); // Delay navigation so that the snackbar can be seen
-    };
-  
-    const handleClose = (event, reason) => {
-      if (reason === 'clickaway') {
-        return;
-      }
-  
+interface Values {
+  firstName: string;
+  surname: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+const SignUpForm: React.FC = () => {
+  const navigate = useNavigate();
+
+  const [values, setValues] = useState<Values>({
+    firstName: "",
+    surname: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
+
+  const [open, setOpen] = useState(false);
+
+  const handleChange = (prop: keyof Values) => (event: ChangeEvent<HTMLInputElement>) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    // Email validation
+    const re = /\S+@\S+\.\S+/;
+    if (!re.test(values.email)) {
+      alert("Please enter a valid email");
+      return;
+    }
+
+    // Password confirmation validation
+    if (values.password !== values.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    setOpen(true);
+    setTimeout(() => {
       setOpen(false);
-    };
-  
+      navigate('/');
+    }, 2000); // Delay navigation so that the snackbar can be seen
+  };
+
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   return (
     <div

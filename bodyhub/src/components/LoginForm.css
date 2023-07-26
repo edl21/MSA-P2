@@ -1,27 +1,4 @@
-.home-container {
-  display: flex;
-  justify-content: space-around;
-  padding: 2rem;
-  color: #495057;
-}
-
-.left-container {
-  flex-basis: 45%;
-}
-
-.right-container {
-  flex-basis: 45%;
-}
-
-.home-opener{
-  font-size: 60px;
-}
-
-.home-information{
-  font-size: 30px;
-}
-
-.home-button {
+.login-button {
   font-size: 14px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -39,7 +16,7 @@
   z-index: 1;
 }
 
-.home-button:before {
+.login-button:before {
   transition: 0.5s all ease;
   position: absolute;
   top: 0;
@@ -47,24 +24,24 @@
   right: 50%;
   bottom: 0;
   opacity: 0;
-  content: '';
+  content: "";
   background-color: #495057;
   z-index: -1;
 }
 
-.home-button:hover,
-.home-button:focus {
+.login-button:hover,
+.login-button:focus {
   color: white;
 }
 
-.home-button:hover:before,
-.home-button:focus:before {
+.login-button:hover:before,
+.login-button:focus:before {
   transition: 0.5s all ease;
   left: 0;
   right: 0;
   opacity: 1;
 }
 
-.home-button:active {
+.login-button:active {
   transform: scale(0.9);
 }

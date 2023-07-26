@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import Login from './pages/Login';
 
-function App() {
+const App: React.FC = () => {
   return (
     <Router>
       <Navbar />

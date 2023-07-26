@@ -2,7 +2,7 @@ import React from "react";
 import SignUpForm from "../components/SignUpForm";
 import "./SignUp.css";
 
-const SignUp = () => {
+const SignUp: React.FC = () => {
   return (
     <div>
       <h1 className="sign-up-title">Sign Up</h1>

@@ -12,9 +12,6 @@ const NavBar: React.FC = () => {
         <Link to="/" className="nav-button">
           Home
         </Link>
-        {/* <Link to="/bmi" className="nav-button">
-          BMI
-        </Link> */}
         <Link to="/about" className="nav-button">
           About
         </Link>

@@ -12,7 +12,7 @@ const Home: React.FC = () => {
           completely free.
         </p>
         <p className="home-information">Ready to get started?</p>
-        <Link to="/bmi">
+        <Link to="/Calculation">
           <button className="home-button">Click Here to Start</button>
         </Link>
       </div>

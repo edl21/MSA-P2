@@ -68,3 +68,20 @@
 .home-button:active {
   transform: scale(0.9);
 }
+
+.home-image {
+  opacity: 0.5;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 6rem;
+  width: 50%;
+}
+
+/* .navbar-logo {
+  width: 3rem;
+  height: auto;
+  margin-right: 2rem;
+  margin-left: 1rem;
+  filter: invert();
+} */

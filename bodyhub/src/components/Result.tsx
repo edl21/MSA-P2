@@ -1,21 +1,25 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-
+import "./Result.css";
 
 interface State {
-  bmi: number;
+  bmi: string;
   tdee: number;
 }
 
 const Result: React.FC = () => {
-    const location = useLocation();
-    const { bmi, tdee } = location.state as { bmi: number; tdee: number };
+  const location = useLocation();
+  const { bmi, tdee } = location.state as State;
 
   return (
-    <div>
+    <div className="result-container">
       <h1>Your Results</h1>
-      <p>Your Body Mass Index (BMI) is: {bmi}</p>
-      <p>Your Total Daily Energy Expenditure (TDEE) is: {tdee} calories</p>
+      <p>
+        <b>BMI:</b> {bmi}
+      </p>
+      <p>
+        <b>TDEE:</b> {tdee} calories/day
+      </p>
     </div>
   );
 };

@@ -19,14 +19,15 @@ const SignUpForm: React.FC = () => {
     surname: "",
     email: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const [open, setOpen] = useState(false);
 
-  const handleChange = (prop: keyof Values) => (event: ChangeEvent<HTMLInputElement>) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+  const handleChange =
+    (prop: keyof Values) => (event: ChangeEvent<HTMLInputElement>) => {
+      setValues({ ...values, [prop]: event.target.value });
+    };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -44,15 +45,48 @@ const SignUpForm: React.FC = () => {
       return;
     }
 
+    // Register user
+    registerUser({
+      username: values.firstName,
+      password: values.password,
+      email: values.email,
+    });
+
     setOpen(true);
     setTimeout(() => {
       setOpen(false);
-      navigate('/');
+      navigate("/");
     }, 2000); // Delay navigation so that the snackbar can be seen
   };
 
-  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === 'clickaway') {
+  const registerUser = (user: {
+    username: string;
+    password: string;
+    email: string;
+  }) => {
+    fetch("http://localhost:5127/api/User", {
+      // Update this URL to match your endpoint
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response data (e.g., navigate to login page)
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+        // Handle error (e.g., show an error message to the user)
+      });
+  };
+
+  const handleClose = (
+    event: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
       return;
     }
 

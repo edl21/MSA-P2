@@ -3,6 +3,7 @@ import { TextField, Snackbar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./SignUpForm.css";
 
+
 interface Values {
   firstName: string;
   surname: string;
@@ -67,6 +68,7 @@ const SignUpForm: React.FC = () => {
     fetch("http://localhost:5127/api/User", {
       // Update this URL to match your endpoint
       method: "POST",
+      // Origin: "http://localhost:5127",
       headers: {
         "Content-Type": "application/json",
       },

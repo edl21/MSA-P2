@@ -19,7 +19,6 @@
   padding-right: 4rem;
 }
 
-
 .navbar-menu {
   display: flex;
   gap: 1rem;
@@ -76,5 +75,11 @@
 
 .navbar-title {
   margin-right: 3rem;
-  color: #dee2e6; 
+  color: #dee2e6;
+}
+
+.welcome-message {
+  font-size: 20px; /* Set the desired font size */
+  font-family: "Arial"; /* Set the desired font family */
+  /* Add other styling properties as needed */
 }

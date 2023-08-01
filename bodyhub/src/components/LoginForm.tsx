@@ -2,8 +2,10 @@ import React, { useState, ChangeEvent } from "react";
 import { TextField, Snackbar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
+import { useAuth } from "../AuthContext";
 
 const LoginForm: React.FC = () => {
+  const { login } = useAuth(); // Move this line inside the functional component
   const navigate = useNavigate();
 
   const [values, setValues] = useState({
@@ -41,12 +43,10 @@ const LoginForm: React.FC = () => {
     });
 
     if (response.status === 200) {
-      // Assume the login was successful
-      setOpen(true);
-      setTimeout(() => {
-        setOpen(false);
-        navigate("/"); // Redirect to home page or dashboard
-      }, 2000);
+      const user = await response.json(); // Assuming the API returns user information
+      login(user); // Update the authentication state
+      setOpen(true); // Trigger the snackbar
+      navigate("/"); // Redirect to the home page
     } else {
       setError("Invalid email or password.");
     }

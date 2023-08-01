@@ -2,8 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/dblogo.png";
 import "./Navbar.css";
+import { useAuth } from "../AuthContext"; // Import the auth context
 
 const NavBar: React.FC = () => {
+  const { user, logout } = useAuth(); // Access user and logout function from context
+
   return (
     <nav className="navbar-container">
       <div className="navbar-left">
@@ -18,12 +21,24 @@ const NavBar: React.FC = () => {
       </div>
 
       <div className="navbar-right">
-        <Link to="/signup" className="nav-button">
-          Sign Up
-        </Link>
-        <Link to="/login" className="nav-button">
-          Login
-        </Link>
+        {user ? (
+          <>
+            <div className="welcome-message">Welcome, {user.username}</div>
+
+            <button onClick={logout} className="nav-button">
+              Sign Out
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to="/signup" className="nav-button">
+              Sign Up
+            </Link>
+            <Link to="/login" className="nav-button">
+              Login
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );

@@ -8,20 +8,23 @@ import Login from './pages/Login';
 import Calculation from "./pages/Calculation";
 import About from "./pages/About";
 import Result from "./components/Result";
+import { AuthProvider } from "./AuthContext"; // Make sure to import AuthProvider
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/calculation" element={<Calculation />} />
-        <Route path="About" element={<About />} />
-        <Route path="/result" element={<Result />} />
-      </Routes>
-    </Router>
+    <AuthProvider> {/* Wrap your Router with AuthProvider */}
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/calculation" element={<Calculation />} />
+          <Route path="About" element={<About />} />
+          <Route path="/result" element={<Result />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

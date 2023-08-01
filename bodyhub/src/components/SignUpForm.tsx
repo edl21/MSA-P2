@@ -66,7 +66,6 @@ const SignUpForm: React.FC = () => {
     email: string;
   }) => {
     fetch("http://localhost:5127/api/User", {
-      // Update this URL to match your endpoint
       method: "POST",
       // Origin: "http://localhost:5127",
       headers: {

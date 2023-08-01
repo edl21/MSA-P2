@@ -12,32 +12,41 @@ const LoginForm: React.FC = () => {
   });
 
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange =
     (prop: string) => (event: ChangeEvent<HTMLInputElement>) => {
       setValues({ ...values, [prop]: event.target.value });
     };
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-
-    // Email validation
-    const re = /\S+@\S+\.\S+/;
-    if (!re.test(values.email)) {
-      alert("Please enter a valid email");
-      return;
-    }
-
-    // You would need to verify the credentials here
-    // For the purpose of this example, we'll just assume the login was successful
-
-    setOpen(true);
-    setTimeout(() => {
-      setOpen(false);
-      navigate("/");
-    }, 2000);
-  };
-
+    const handleSubmit = async (event: React.FormEvent) => {
+      event.preventDefault();
+    
+      // Email validation
+      const re = /\S+@\S+\.\S+/;
+      if (!re.test(values.email)) {
+        alert("Please enter a valid email");
+        return;
+      }
+    // GET request works "http://localhost:5127/api/User/" by calling it with the userid, I need to call it with the email so users can login with their email and password.
+      const queryParams = new URLSearchParams(values);
+      const url = `http://localhost:5127/api/User/Login?${queryParams.toString()}`;
+    
+      // Call your API to verify the credentials
+      const response = await fetch(url);
+    
+      if (response.status === 200) {
+        // Assume the login was successful
+        setOpen(true);
+        setTimeout(() => {
+          setOpen(false);
+          navigate("/"); // Redirect to home page or dashboard
+        }, 2000);
+      } else {
+        setError("Invalid email or password.");
+      }
+    };
+    
   const handleClose = (
     event: React.SyntheticEvent | Event,
     reason?: string
@@ -83,6 +92,7 @@ const LoginForm: React.FC = () => {
           value={values.password}
           onChange={handleChange("password")}
         />
+        {error && <div style={{ color: "red" }}>{error}</div>}
         <button type="submit" className="login-button">
           Login
         </button>

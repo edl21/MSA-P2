@@ -1,26 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\p2api.csproj": {}
+    "C:\\Users\\edwar\\Documents\\GitHub\\MSA-P2\\p2api\\p2api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\p2api.csproj": {
+    "C:\\Users\\edwar\\Documents\\GitHub\\MSA-P2\\p2api\\p2api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\p2api.csproj",
+        "projectUniqueName": "C:\\Users\\edwar\\Documents\\GitHub\\MSA-P2\\p2api\\p2api.csproj",
         "projectName": "p2api",
-        "projectPath": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\p2api.csproj",
-        "packagesPath": "C:\\Users\\Eddie Li\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\obj\\",
+        "projectPath": "C:\\Users\\edwar\\Documents\\GitHub\\MSA-P2\\p2api\\p2api.csproj",
+        "packagesPath": "C:\\Users\\edwar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\edwar\\Documents\\GitHub\\MSA-P2\\p2api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Eddie Li\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\edwar\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -85,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

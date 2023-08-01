@@ -48,6 +48,27 @@ namespace p2api.Controllers
 
             return user;
         }
+        
+        // POST: api/User/Login
+        [HttpPost("Login")]
+        public async Task<ActionResult<User>> Login(UserLoginRequest request)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+
+            if (user == null || user.Password != request.Password) // Replace this simple check with proper password hashing
+            {
+                return Unauthorized();
+            }
+
+            return user;
+        }
+
+        public class UserLoginRequest
+        {
+            public string Email { get; set; }
+            public string Password { get; set; }
+        }
+
 
         // PUT: api/User/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

@@ -33,7 +33,7 @@ const Result: React.FC = () => {
     };
 
     try {
-      const response = await fetch("/api/BMI", {
+      const response = await fetch("http://localhost:5127/api/BMI", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

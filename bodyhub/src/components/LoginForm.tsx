@@ -46,7 +46,11 @@ const LoginForm: React.FC = () => {
       const user = await response.json(); // Assuming the API returns user information
       login(user); // Update the authentication state
       setOpen(true); // Trigger the snackbar
-      navigate("/"); // Redirect to the home page
+
+      // Redirect to the home page after a delay of 2 seconds (2000 milliseconds)
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     } else {
       setError("Invalid email or password.");
     }

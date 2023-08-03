@@ -18,6 +18,11 @@ const NavBar: React.FC = () => {
         <Link to="/about" className="nav-button">
           About
         </Link>
+        {user && (
+          <Link to="/history" className="nav-button">
+            History
+          </Link>
+        )}
       </div>
 
       <div className="navbar-right">

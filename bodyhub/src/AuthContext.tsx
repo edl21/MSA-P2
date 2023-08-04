@@ -1,8 +1,6 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface User {
-  // Define the properties you need for your user object here.
-  // Example:
   username: string;
   email: string;
   // Add other properties as needed.
@@ -27,11 +25,29 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
+  // Initialize user from session storage
+  useEffect(() => {
+    const storedUsername = sessionStorage.getItem("username");
+    if (storedUsername) {
+      // Update the user state with the stored username
+      // You can modify this to include other user information if needed
+      setUser({ username: storedUsername, email: "" });
+    }
+  }, []);
+
   const login = (user: User) => {
+    // Save the username to session storage
+    sessionStorage.setItem("username", user.username);
+
+    // Update user state
     setUser(user);
   };
 
   const logout = () => {
+    // Remove the username from session storage
+    sessionStorage.removeItem("username");
+
+    // Update user state
     setUser(null);
   };
 

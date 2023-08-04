@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using p2api.Models;
@@ -13,111 +10,64 @@ namespace p2api.Controllers
     [ApiController]
     public class BMIController : ControllerBase
     {
-        private readonly BMIContext _context;
+        private readonly AppDbContext _context;
 
-        public BMIController(BMIContext context)
+        public BMIController(AppDbContext context)
         {
             _context = context;
         }
 
+        // POST: api/BMI
+        [HttpPost]
+        public async Task<IActionResult> PostBMI([FromBody] BMI model)
+        {
+            if (ModelState.IsValid)
+            {
+                // You can look up the user by username if needed
+                var user = _context.Users.FirstOrDefault(u => u.Username == model.Username);
+                if (user == null)
+                {
+                    return NotFound("User not found");
+                }
+
+                // Convert height from cm to meters
+                double heightInMeters = model.Height / 100;
+                // Calculate BMI score
+                model.BMIScore = model.Weight / (heightInMeters * heightInMeters);
+
+                _context.BMIs.Add(model);
+                await _context.SaveChangesAsync();
+
+                return Ok("BMI data saved successfully");
+            }
+
+            return BadRequest(ModelState);
+        }
+
         // GET: api/BMI
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BMI>>> GetBMIs()
+        public async Task<IActionResult> GetBMIHistory()
         {
-          if (_context.BMIs == null)
-          {
-              return NotFound();
-          }
-            return await _context.BMIs.ToListAsync();
+            var bmiHistory = await _context.BMIs.ToListAsync();
+            return Ok(bmiHistory);
         }
-
-        // GET: api/BMI/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<BMI>> GetBMI(long id)
+        [HttpGet("username/{username}")]
+        public async Task<IActionResult> GetBMIByUsername(string username)
         {
-          if (_context.BMIs == null)
-          {
-              return NotFound();
-          }
-            var bMI = await _context.BMIs.FindAsync(id);
+            // Finding the user by username
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
 
-            if (bMI == null)
+            if (user == null)
             {
-                return NotFound();
+                return NotFound("User not found");
             }
 
-            return bMI;
+            // Here, I'm assuming that the BMI records are linked to the user via a Username field.
+            // Adjust this query based on how your data model relates BMI records to users.
+            var bmiData = await _context.BMIs.Where(b => b.Username == username).ToListAsync();
+
+            return Ok(bmiData);
         }
 
-        // PUT: api/BMI/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutBMI(long id, BMI bMI)
-        {
-            if (id != bMI.id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(bMI).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BMIExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/BMI
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<BMI>> PostBMI(BMI bMI)
-        {
-          if (_context.BMIs == null)
-          {
-              return Problem("Entity set 'BMIContext.BMIs'  is null.");
-          }
-            _context.BMIs.Add(bMI);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetBMI", new { id = bMI.id }, bMI);
-        }
-
-        // DELETE: api/BMI/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBMI(long id)
-        {
-            if (_context.BMIs == null)
-            {
-                return NotFound();
-            }
-            var bMI = await _context.BMIs.FindAsync(id);
-            if (bMI == null)
-            {
-                return NotFound();
-            }
-
-            _context.BMIs.Remove(bMI);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool BMIExists(long id)
-        {
-            return (_context.BMIs?.Any(e => e.id == id)).GetValueOrDefault();
-        }
     }
 }

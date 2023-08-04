@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using p2api.Models;
@@ -13,9 +10,9 @@ namespace p2api.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly UserContext _context;
+        private readonly AppDbContext _context;
 
-        public UserController(UserContext context)
+        public UserController(AppDbContext context)
         {
             _context = context;
         }
@@ -24,10 +21,10 @@ namespace p2api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-          if (_context.Users == null)
-          {
-              return NotFound();
-          }
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
             return await _context.Users.ToListAsync();
         }
 
@@ -35,10 +32,10 @@ namespace p2api.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(long id)
         {
-          if (_context.Users == null)
-          {
-              return NotFound();
-          }
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
             var user = await _context.Users.FindAsync(id);
 
             if (user == null)
@@ -48,7 +45,7 @@ namespace p2api.Controllers
 
             return user;
         }
-        
+
         // POST: api/User/Login
         [HttpPost("Login")]
         public async Task<ActionResult<User>> Login(UserLoginRequest request)
@@ -65,9 +62,10 @@ namespace p2api.Controllers
 
         public class UserLoginRequest
         {
-            public string Email { get; set; }
-            public string Password { get; set; }
+            public string? Email { get; set; }
+            public string? Password { get; set; }
         }
+
 
 
         // PUT: api/User/5
@@ -106,10 +104,10 @@ namespace p2api.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-          if (_context.Users == null)
-          {
-              return Problem("Entity set 'UserContext.Users'  is null.");
-          }
+            if (_context.Users == null)
+            {
+                return Problem("Entity set 'UserContext.Users'  is null.");
+            }
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 

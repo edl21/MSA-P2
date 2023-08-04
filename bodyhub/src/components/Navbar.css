@@ -79,7 +79,7 @@
 }
 
 .welcome-message {
-  font-size: 20px; /* Set the desired font size */
-  font-family: "Arial"; /* Set the desired font family */
-  /* Add other styling properties as needed */
+  font-size: 19px;
+  color: #dee2e6;
+  font-weight: 800;
 }

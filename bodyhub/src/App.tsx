@@ -8,7 +8,9 @@ import Login from './pages/Login';
 import Calculation from "./pages/Calculation";
 import About from "./pages/About";
 import Result from "./components/Result";
-import { AuthProvider } from "./AuthContext"; // Make sure to import AuthProvider
+import HistoryPage from "./pages/HistoryPage";
+import { AuthProvider } from "./AuthContext"; 
+
 
 const App: React.FC = () => {
   return (
@@ -22,6 +24,7 @@ const App: React.FC = () => {
           <Route path="/calculation" element={<Calculation />} />
           <Route path="About" element={<About />} />
           <Route path="/result" element={<Result />} />
+          <Route path="/history" element={<HistoryPage />} />
         </Routes>
       </Router>
     </AuthProvider>

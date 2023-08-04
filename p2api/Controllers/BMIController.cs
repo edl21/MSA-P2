@@ -29,6 +29,12 @@ namespace p2api.Controllers
                 {
                     return NotFound("User not found");
                 }
+
+                // Convert height from cm to meters
+                double heightInMeters = model.Height / 100;
+                // Calculate BMI score
+                model.BMIScore = model.Weight / (heightInMeters * heightInMeters);
+
                 _context.BMIs.Add(model);
                 await _context.SaveChangesAsync();
 
@@ -37,5 +43,31 @@ namespace p2api.Controllers
 
             return BadRequest(ModelState);
         }
+
+        // GET: api/BMI
+        [HttpGet]
+        public async Task<IActionResult> GetBMIHistory()
+        {
+            var bmiHistory = await _context.BMIs.ToListAsync();
+            return Ok(bmiHistory);
+        }
+        [HttpGet("username/{username}")]
+        public async Task<IActionResult> GetBMIByUsername(string username)
+        {
+            // Finding the user by username
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+
+            // Here, I'm assuming that the BMI records are linked to the user via a Username field.
+            // Adjust this query based on how your data model relates BMI records to users.
+            var bmiData = await _context.BMIs.Where(b => b.Username == username).ToListAsync();
+
+            return Ok(bmiData);
+        }
+
     }
 }

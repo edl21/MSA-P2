@@ -27,13 +27,10 @@ const Result: React.FC = () => {
     console.log("TDEE value:", tdee, "Rounded TDEE:", roundedTdee);
 
     const payload = {
-      model: {
-        weight: weight,
-        height: height,
-        bmi: bmi,
-        tdee: roundedTdee, // Use the rounded TDEE
-        username: username,
-      },
+      weight: weight,
+      height: height,
+      tdee: roundedTdee,
+      username: username,
     };
 
     try {
@@ -50,7 +47,7 @@ const Result: React.FC = () => {
       } else if (response.ok) {
         console.log("Data saved successfully");
       } else {
-        const errorDetails = await response.text(); 
+        const errorDetails = await response.text();
         console.log("Error saving data", errorDetails);
       }
     } catch (error) {

@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace p2api.Models
 {
     public class AppDbContext : DbContext

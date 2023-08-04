@@ -23,13 +23,17 @@ const Result: React.FC = () => {
       return;
     }
 
+    const roundedTdee = Math.round(tdee);
+    console.log("TDEE value:", tdee, "Rounded TDEE:", roundedTdee);
+
     const payload = {
-      weight: weight,
-      height: height,
-      bmi: bmi,
-      tdee: tdee,
-      username: username, // Add the username here
-      // Other necessary fields, such as userId if needed
+      model: {
+        weight: weight,
+        height: height,
+        bmi: bmi,
+        tdee: roundedTdee, // Use the rounded TDEE
+        username: username,
+      },
     };
 
     try {
@@ -46,7 +50,7 @@ const Result: React.FC = () => {
       } else if (response.ok) {
         console.log("Data saved successfully");
       } else {
-        const errorDetails = await response.text(); // Use .text() instead of .json() for non-200 responses
+        const errorDetails = await response.text(); 
         console.log("Error saving data", errorDetails);
       }
     } catch (error) {

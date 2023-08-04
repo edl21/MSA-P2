@@ -1,30 +1,32 @@
-import React from "react";
-import { Button } from "@mui/material";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
+import { Button, Snackbar } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Result.css";
 
 interface State {
   bmi: string;
   tdee: number;
-  weight: number; // Assuming you pass this value
-  height: number; // Assuming you pass this value
+  weight: number;
+  height: number;
 }
 
 const Result: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { bmi, tdee, weight, height } = location.state as State;
 
-  const handleSave = async () => {
-    const username = sessionStorage.getItem("username"); // Assuming you've saved the username here after login
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
 
-    // If no username found, handle error
+  const handleSave = async () => {
+    const username = sessionStorage.getItem("username");
+
     if (!username) {
       console.error("User not logged in");
       return;
     }
 
     const roundedTdee = Math.round(tdee);
-    console.log("TDEE value:", tdee, "Rounded TDEE:", roundedTdee);
 
     const payload = {
       weight: weight,
@@ -46,6 +48,12 @@ const Result: React.FC = () => {
         console.log("Endpoint not found");
       } else if (response.ok) {
         console.log("Data saved successfully");
+        setMessage("Data saved successfully");
+        setOpen(true);
+
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
       } else {
         const errorDetails = await response.text();
         console.log("Error saving data", errorDetails);
@@ -53,6 +61,10 @@ const Result: React.FC = () => {
     } catch (error) {
       console.log("An error occurred:", error);
     }
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -67,6 +79,12 @@ const Result: React.FC = () => {
       <Button variant="contained" color="primary" onClick={handleSave}>
         Save Results
       </Button>
+      <Snackbar
+        open={open}
+        autoHideDuration={3000}
+        onClose={handleClose}
+        message={message}
+      />
     </div>
   );
 };

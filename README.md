@@ -1,2 +1,7 @@
-# MSA-P2
-Create a BMI calculator which can be used by anyone and users have the option to sign up and store their information and view past data about their original BMI scores. I have currently create a BMI.cs and BMIContext.cs in models. What else would I need to create in the Back-end?
+# `MSA PHASE 2`
+
+### How to run
+
+- Run a split terminal
+  - In terminal 1, cd to "p2api" and then "dotnet run"
+  - In terminal 2, cd to "bodyhub" and then "npm install". When all the installations are complete use "npm run" when

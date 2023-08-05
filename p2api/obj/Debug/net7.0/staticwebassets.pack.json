@@ -1,0 +1,81 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\asset-manifest.json",
+      "PackagePath": "staticwebassets\\build\\asset-manifest.json"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\favicon.ico",
+      "PackagePath": "staticwebassets\\build\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\index.html",
+      "PackagePath": "staticwebassets\\build\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\logo192.png",
+      "PackagePath": "staticwebassets\\build\\logo192.png"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\logo512.png",
+      "PackagePath": "staticwebassets\\build\\logo512.png"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\manifest.json",
+      "PackagePath": "staticwebassets\\build\\manifest.json"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\robots.txt",
+      "PackagePath": "staticwebassets\\build\\robots.txt"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\static\\css\\main.b7d67c81.css",
+      "PackagePath": "staticwebassets\\build\\static\\css\\main.b7d67c81.css"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\static\\css\\main.b7d67c81.css.map",
+      "PackagePath": "staticwebassets\\build\\static\\css\\main.b7d67c81.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\static\\js\\main.de6d37dc.js",
+      "PackagePath": "staticwebassets\\build\\static\\js\\main.de6d37dc.js"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\static\\js\\main.de6d37dc.js.LICENSE.txt",
+      "PackagePath": "staticwebassets\\build\\static\\js\\main.de6d37dc.js.LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\static\\js\\main.de6d37dc.js.map",
+      "PackagePath": "staticwebassets\\build\\static\\js\\main.de6d37dc.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\static\\media\\HelveticaLt.0661d649611e02bfea51.ttf",
+      "PackagePath": "staticwebassets\\build\\static\\media\\HelveticaLt.0661d649611e02bfea51.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\static\\media\\dblogo.6ab58f2d5080973cf863.png",
+      "PackagePath": "staticwebassets\\build\\static\\media\\dblogo.6ab58f2d5080973cf863.png"
+    },
+    {
+      "Id": "C:\\Users\\Eddie Li\\Documents\\GitHub\\MSA-P2\\p2api\\wwwroot\\build\\static\\media\\squating.4e4e3f739ce9ea16a388.png",
+      "PackagePath": "staticwebassets\\build\\static\\media\\squating.4e4e3f739ce9ea16a388.png"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.p2api.props",
+      "PackagePath": "build\\p2api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.p2api.props",
+      "PackagePath": "buildMultiTargeting\\p2api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.p2api.props",
+      "PackagePath": "buildTransitive\\p2api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.p2api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

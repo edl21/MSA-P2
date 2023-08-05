@@ -556,3 +556,16 @@ C:\Users\edwar\Documents\GitHub\MSA-P2\p2api\obj\Debug\net7.0\refint\p2api.dll
 C:\Users\edwar\Documents\GitHub\MSA-P2\p2api\obj\Debug\net7.0\p2api.pdb
 C:\Users\edwar\Documents\GitHub\MSA-P2\p2api\obj\Debug\net7.0\p2api.genruntimeconfig.cache
 C:\Users\edwar\Documents\GitHub\MSA-P2\p2api\obj\Debug\net7.0\ref\p2api.dll
+C:\Users\Eddie Li\Documents\GitHub\MSA-P2\p2api\bin\Debug\net7.0\publish\appsettings.Development.json
+C:\Users\Eddie Li\Documents\GitHub\MSA-P2\p2api\bin\Debug\net7.0\publish\appsettings.json
+C:\Users\Eddie Li\Documents\GitHub\MSA-P2\p2api\bin\Debug\net7.0\publish\publish\web.config
+C:\Users\Eddie Li\Documents\GitHub\MSA-P2\p2api\bin\Debug\net7.0\publish\web.config
+C:\Users\Eddie Li\Documents\GitHub\MSA-P2\p2api\bin\Debug\net7.0\publish\p2api.deps.json
+C:\Users\Eddie Li\Documents\GitHub\MSA-P2\p2api\bin\Debug\net7.0\publish\p2api.runtimeconfig.json
+C:\Users\Eddie Li\Documents\GitHub\MSA-P2\p2api\bin\Debug\net7.0\publish\publish\appsettings.Development.json
+C:\Users\Eddie Li\Documents\GitHub\MSA-P2\p2api\bin\Debug\net7.0\publish\publish\appsettings.json
+C:\Users\Eddie Li\Documents\GitHub\MSA-P2\p2api\bin\Debug\net7.0\publish\publish\p2api.deps.json
+C:\Users\Eddie Li\Documents\GitHub\MSA-P2\p2api\bin\Debug\net7.0\publish\publish\p2api.runtimeconfig.json
+C:\Users\Eddie Li\Documents\GitHub\MSA-P2\p2api\bin\Debug\net7.0\publish\wwwroot\build\asset-manifest.json
+C:\Users\Eddie Li\Documents\GitHub\MSA-P2\p2api\bin\Debug\net7.0\publish\wwwroot\build\manifest.json
+C:\Users\Eddie Li\Documents\GitHub\MSA-P2\p2api\bin\Debug\net7.0\p2api.staticwebassets.runtime.json

@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b7d67c81.css",
+    "main.js": "/static/js/main.de6d37dc.js",
+    "static/media/HelveticaLt.ttf": "/static/media/HelveticaLt.0661d649611e02bfea51.ttf",
+    "static/media/squating.png": "/static/media/squating.4e4e3f739ce9ea16a388.png",
+    "static/media/dblogo.png": "/static/media/dblogo.6ab58f2d5080973cf863.png",
+    "index.html": "/index.html",
+    "main.b7d67c81.css.map": "/static/css/main.b7d67c81.css.map",
+    "main.de6d37dc.js.map": "/static/js/main.de6d37dc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b7d67c81.css",
+    "static/js/main.de6d37dc.js"
+  ]
+}

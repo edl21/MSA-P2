@@ -18,6 +18,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// ...
+
 var app = builder.Build();
 
 // Enable CORS
@@ -25,6 +27,9 @@ app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(
 
 // Redirect HTTP to HTTPS
 app.UseHttpsRedirection();
+
+// Use static files (React app)
+app.UseStaticFiles();
 
 // Use routing
 app.UseRouting();
@@ -41,5 +46,8 @@ if (app.Environment.IsDevelopment())
 
 // Map the controllers
 app.MapControllers();
+
+// Map fallback to index.html for any unknown routes
+app.MapFallbackToFile("index.html");
 
 app.Run();

@@ -22,6 +22,21 @@ jobs:
           dotnet-version: "7.x"
           include-prerelease: true
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "16.x"
+
+      - name: Install dependencies and build React app
+        run: |
+          cd bodyhub
+          npm ci
+          npm run build
+          cd ..
+
+      - name: Move React build output
+        run: mv bodyhub/build p2api/wwwroot
+
       - name: Build with dotnet
         run: dotnet build p2api --configuration Release
 

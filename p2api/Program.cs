@@ -1,24 +1,23 @@
 using Microsoft.EntityFrameworkCore;
-
 using p2api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// builder.Services.AddDbContext<BMIContext>(opt =>
-//     opt.UseInMemoryDatabase("BMIs"));
-// builder.Services.AddDbContext<UserContext>(opt =>
-//     opt.UseInMemoryDatabase("Users"));
-
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseInMemoryDatabase("AppData"));
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+// Enable middleware to serve static files
+app.UseStaticFiles();
+
+// Enable middleware to serve default files
+app.UseDefaultFiles();
 
 // Enable CORS
 app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
@@ -41,5 +40,7 @@ if (app.Environment.IsDevelopment())
 
 // Map the controllers
 app.MapControllers();
+
+app.MapFallbackToFile("index.html"); // Ensures unknown paths always serve index.html
 
 app.Run();

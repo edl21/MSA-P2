@@ -4,17 +4,16 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
-import Login from './pages/Login';
+import Login from "./pages/Login";
 import Calculation from "./pages/Calculation";
 import About from "./pages/About";
 import Result from "./components/Result";
 import HistoryPage from "./pages/HistoryPage";
-import { AuthProvider } from "./AuthContext"; 
-
+import { AuthProvider } from "./AuthContext";
 
 const App: React.FC = () => {
   return (
-    <AuthProvider> {/* Wrap your Router with AuthProvider */}
+    <AuthProvider>
       <Router>
         <Navbar />
         <Routes>
@@ -29,6 +28,6 @@ const App: React.FC = () => {
       </Router>
     </AuthProvider>
   );
-}
+};
 
 export default App;

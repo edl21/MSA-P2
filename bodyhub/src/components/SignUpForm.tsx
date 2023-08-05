@@ -33,15 +33,15 @@ const SignUpForm: React.FC = () => {
     event.preventDefault();
 
     // Email validation
-    const re = /\S+@\S+\.\S+/;
+    const re = /\S+@\S+\.\S+/; // Regular expression to check for valid email format
     if (!re.test(values.email)) {
-      alert("Please enter a valid email");
+      alert("Please enter a valid email"); // Alert if the email is invalid
       return;
     }
 
     // Password confirmation validation
     if (values.password !== values.confirmPassword) {
-      alert("Passwords do not match");
+      alert("Passwords do not match"); // Alert if the passwords do not match
       return;
     }
 
@@ -65,6 +65,7 @@ const SignUpForm: React.FC = () => {
     email: string;
   }) => {
     fetch("http://localhost:5127/api/User", {
+      // URL to register API endpoint
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -86,10 +87,10 @@ const SignUpForm: React.FC = () => {
     reason?: string
   ) => {
     if (reason === "clickaway") {
-      return;
+      return; // Don't close the snackbar if the user clicked away
     }
 
-    setOpen(false);
+    setOpen(false); // Close the snackbar
   };
 
   return (

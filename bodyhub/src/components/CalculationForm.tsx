@@ -1,7 +1,7 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { Button, TextField, MenuItem, FormControl } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../AuthContext"; // Assuming the path to your AuthContext file
+import { useAuth } from "../AuthContext";
 import "./CalculationForm.css";
 
 interface FormValues {
@@ -13,16 +13,19 @@ interface FormValues {
 }
 
 const CalculationForm: React.FC = () => {
+  // Get the current user from AuthContext
   const { user } = useAuth();
+  // Get the navigate function from react-router
   const navigate = useNavigate();
 
+  // Redirect to the login page if the user is not authenticated
   useEffect(() => {
-    // Redirect to the login page if the user is not authenticated
     if (!user) {
       navigate("/login");
     }
   }, [user, navigate]);
 
+  // Initialize state for form values
   const [values, setValues] = useState<FormValues>({
     height: "",
     weight: "",
@@ -31,11 +34,13 @@ const CalculationForm: React.FC = () => {
     activity: "",
   });
 
+  // Handler for form field changes
   const handleChange =
     (prop: keyof FormValues) => (event: ChangeEvent<HTMLInputElement>) => {
       setValues({ ...values, [prop]: event.target.value });
     };
 
+  // Function to check if all form fields are filled
   const allFieldsFilled = () => {
     for (let key in values) {
       if (!values[key as keyof FormValues]) {
@@ -45,17 +50,20 @@ const CalculationForm: React.FC = () => {
     return true;
   };
 
+  // Handler for form submission
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    // Calculate BMI and TDEE (total daily energy expenditure)
     const heightInMeters = parseInt(values.height) / 100;
     const weightInKg = parseInt(values.weight);
     const age = parseInt(values.age);
     const bmi = (weightInKg / Math.pow(heightInMeters, 2)).toFixed(2);
+    // Calculate BMR(basal metabolic rate) based on the gender
     const bmr =
       values.gender === "male"
         ? 10 * weightInKg + 6.25 * (heightInMeters * 100) - 5 * age + 5
         : 10 * weightInKg + 6.25 * (heightInMeters * 100) - 5 * age - 161;
-
+    // Calculate TDEE based on the activity level
     let tdee: number;
 
     switch (values.activity) {
@@ -78,33 +86,7 @@ const CalculationForm: React.FC = () => {
         tdee = bmr;
     }
 
-    const newBMI = {
-      weight: weightInKg,
-      height: heightInMeters * 100, // Converting back to cm
-      BMIScore: parseFloat(bmi), // Send the calculated BMI
-      TDEE: tdee, // Send the calculated TDEE
-      username: user?.username, // Add the username
-    };
-
-    // Send a POST request to the backend to save the BMI
-    try {
-      const response = await fetch("/api/BMI", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // Include any required authentication headers here
-        },
-        body: JSON.stringify(newBMI),
-      });
-
-      if (!response.ok) {
-        console.error("Failed to save BMI");
-        // You can handle this error as appropriate for your application
-      }
-    } catch (error) {
-      console.error("An error occurred while saving BMI:", error);
-    }
-
+    // Navigate to the result page with the calculated BMI and TDEE
     navigate("/result", {
       state: {
         bmi: bmi,

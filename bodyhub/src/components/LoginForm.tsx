@@ -5,8 +5,8 @@ import "./LoginForm.css";
 import { useAuth } from "../AuthContext";
 
 const LoginForm: React.FC = () => {
-  const { login } = useAuth(); // Move this line inside the functional component
-  const navigate = useNavigate();
+  const { login } = useAuth(); // Import the login function from the authentication context
+  const navigate = useNavigate(); // navigate function from react-router-dom
 
   const [values, setValues] = useState({
     email: "",
@@ -25,21 +25,21 @@ const LoginForm: React.FC = () => {
     event.preventDefault();
 
     // Email validation
-    const re = /\S+@\S+\.\S+/;
+    const re = /\S+@\S+\.\S+/; // Regular expression to check for valid email format
     if (!re.test(values.email)) {
-      alert("Please enter a valid email");
+      alert("Please enter a valid email"); // Alert if the email is invalid
       return;
     }
 
-    const url = "http://localhost:5127/api/User/Login";
+    const url = "http://localhost:5127/api/User/Login"; // URL to  login API endpoint
 
-    // Call your API to verify the credentials
+    // Calls API to verify the credentials
     const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(values), // Send the values as a JSON body
+      body: JSON.stringify(values),
     });
 
     if (response.status === 200) {
@@ -47,24 +47,25 @@ const LoginForm: React.FC = () => {
       login(user); // Update the authentication state
       setOpen(true); // Trigger the snackbar
 
-      // Redirect to the home page after a delay of 2 seconds (2000 milliseconds)
+      // Redirect to the home page after a delay of 2 seconds
       setTimeout(() => {
         navigate("/");
       }, 2000);
     } else {
-      setError("Invalid email or password.");
+      setError("Invalid email or password."); // Show an error if the credentials are invalid
     }
   };
 
+  // Handle the closing of the snackbar
   const handleClose = (
     event: React.SyntheticEvent | Event,
     reason?: string
   ) => {
     if (reason === "clickaway") {
-      return;
+      return; // Don't close the snackbar if the user clicked away
     }
 
-    setOpen(false);
+    setOpen(false); // Close the snackbar
   };
 
   return (

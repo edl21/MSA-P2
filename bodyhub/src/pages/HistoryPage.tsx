@@ -2,18 +2,23 @@ import React, { useState, useEffect } from "react";
 import "./HistoryPage.css";
 
 const HistoryPage: React.FC = () => {
+  // Create state for BMI history and loading status
   const [history, setHistory] = useState<BMI[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // useEffect to fetch user's BMI history when the component mounts
   useEffect(() => {
+    // Retrieves a username from session storage
     const username = sessionStorage.getItem("username");
 
+    // If no username is found, log an error and stop loading
     if (!username) {
       console.error("User not logged in");
       setLoading(false);
       return;
     }
 
+    // Make a GET request to fetch BMI history for the logged in user
     fetch(`http://localhost:5127/api/BMI/username/${username}`, {
       method: "GET",
       headers: {
@@ -22,12 +27,17 @@ const HistoryPage: React.FC = () => {
     })
       .then((response) => response.json())
       .then((data: BMI[]) => {
-        console.log("Received raw data:", JSON.stringify(data, null, 2)); // Log the raw data
+        // Log the raw data received from the server
+        console.log("Received raw data:", JSON.stringify(data, null, 2));
+        // Update the history state with the received data
         setHistory(data);
+        // Stop loading
         setLoading(false);
       })
       .catch((error) => {
+        // Log any error that occurred while fetching the BMI history
         console.error("An error occurred while fetching BMI history:", error);
+        // Stop loading
         setLoading(false);
       });
   }, []);
@@ -36,8 +46,10 @@ const HistoryPage: React.FC = () => {
     <div className="history-page">
       <h1>Your BMI and TDEE History</h1>
       {loading ? (
+        // Show loading text while loading
         <div>Loading...</div>
       ) : (
+        // Show history table when done loading
         <table>
           <thead>
             <tr>
@@ -52,7 +64,7 @@ const HistoryPage: React.FC = () => {
               <tr key={index}>
                 <td>{entry.weight}</td>
                 <td>{entry.height}</td>
-                <td>{entry.bmiScore.toFixed(2)}</td> 
+                <td>{entry.bmiScore.toFixed(2)}</td>
                 <td>{entry.tdee.toFixed(2)}</td>
               </tr>
             ))}
@@ -69,7 +81,7 @@ interface BMI {
   id: number;
   weight: number;
   height: number;
-  bmiScore: number; // Changed from 'bmiScore' to 'BMIScore'
+  bmiScore: number;
   tdee: number;
   Username?: string;
 }

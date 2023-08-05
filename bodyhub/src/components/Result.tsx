@@ -11,23 +11,30 @@ interface State {
 }
 
 const Result: React.FC = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const location = useLocation(); // for accessing the router's current location
+  const navigate = useNavigate(); // for navigating between routes
+  // Extract relevant data from location's state
   const { bmi, tdee, weight, height } = location.state as State;
 
+  // States for handling the Snackbar component and its message
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
 
+  // Function to save the calculated results
   const handleSave = async () => {
+    // Retrieve username from session storage
     const username = sessionStorage.getItem("username");
 
+    // Check if the user is logged in
     if (!username) {
       console.error("User not logged in");
       return;
     }
 
+    // Round off the tdee value
     const roundedTdee = Math.round(tdee);
 
+    // Create the payload for the POST request
     const payload = {
       weight: weight,
       height: height,
@@ -36,6 +43,7 @@ const Result: React.FC = () => {
     };
 
     try {
+      // Send a POST request to save the data
       const response = await fetch("http://localhost:5127/api/BMI", {
         method: "POST",
         headers: {
@@ -44,6 +52,7 @@ const Result: React.FC = () => {
         body: JSON.stringify(payload),
       });
 
+      // Check response status and handle accordingly
       if (response.status === 404) {
         console.log("Endpoint not found");
       } else if (response.ok) {
@@ -51,6 +60,7 @@ const Result: React.FC = () => {
         setMessage("Data saved successfully");
         setOpen(true);
 
+        // Navigate to the home page after a delay of 3 seconds
         setTimeout(() => {
           navigate("/");
         }, 3000);
@@ -63,6 +73,7 @@ const Result: React.FC = () => {
     }
   };
 
+  // Function to close the Snackbar
   const handleClose = () => {
     setOpen(false);
   };

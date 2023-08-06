@@ -37,4 +37,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapFallbackToFile("index.html");
+
 app.Run();

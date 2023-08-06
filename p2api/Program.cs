@@ -19,7 +19,7 @@ app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(
 app.UseHttpsRedirection();
 
 // Serve static files
-app.UseStaticFiles();  // <--- Add this line
+app.UseStaticFiles();
 
 // Use routing
 app.UseRouting();
@@ -27,14 +27,14 @@ app.UseRouting();
 // Use authorization
 app.UseAuthorization();
 
+// Map the controllers
+app.MapControllers();
+
 // Enable Swagger in development environment
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-// Map the controllers
-app.MapControllers();
 
 app.Run();

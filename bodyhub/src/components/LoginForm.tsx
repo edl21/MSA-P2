@@ -31,7 +31,7 @@ const LoginForm: React.FC = () => {
       return;
     }
 
-    const url = "http://localhost:5127/api/User/Login"; // URL to  login API endpoint
+    const url = "http://bodyhub.azurewebsites.net/api/User/Login"; // URL to  login API endpoint
 
     // Calls API to verify the credentials
     const response = await fetch(url, {

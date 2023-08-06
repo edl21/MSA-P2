@@ -64,7 +64,7 @@ const SignUpForm: React.FC = () => {
     password: string;
     email: string;
   }) => {
-    fetch("http://localhost:5127/api/User", {
+    fetch("http://bodyhub.azurewebsites.net/api/User", {
       // URL to register API endpoint
       method: "POST",
       headers: {

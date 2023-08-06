@@ -68,3 +68,6 @@ jobs:
           slot-name: "Production"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3FA5C2E30F4442C286B977BA61D1FE3A }}
           package: .
+          images: |
+            bodyhub.azurecr.io/bodyhub:latest
+            bodyhub.azurecr.io/bodyhub-api:latest

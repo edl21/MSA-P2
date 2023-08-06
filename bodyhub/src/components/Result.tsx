@@ -44,7 +44,7 @@ const Result: React.FC = () => {
 
     try {
       // Send a POST request to save the data
-      const response = await fetch("http://bodyhub.azurewebsites.net/api/BMI", {
+      const response = await fetch("https://bodyhub.azurewebsites.net/api/BMI", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -19,7 +19,7 @@ const HistoryPage: React.FC = () => {
     }
 
     // Make a GET request to fetch BMI history for the logged in user
-    fetch(`http://bodyhub.azurewebsites.net/api/BMI/username/${username}`, {
+    fetch(`https://bodyhub.azurewebsites.net/api/BMI/username/${username}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

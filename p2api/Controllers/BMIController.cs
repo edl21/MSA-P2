@@ -23,7 +23,7 @@ namespace p2api.Controllers
         {
             if (ModelState.IsValid)
             {
-                // You can look up the user by username if needed
+                // can look up the user by username if needed
                 var user = _context.Users.FirstOrDefault(u => u.Username == model.Username);
                 if (user == null)
                 {
@@ -62,8 +62,6 @@ namespace p2api.Controllers
                 return NotFound("User not found");
             }
 
-            // Here, I'm assuming that the BMI records are linked to the user via a Username field.
-            // Adjust this query based on how your data model relates BMI records to users.
             var bmiData = await _context.BMIs.Where(b => b.Username == username).ToListAsync();
 
             return Ok(bmiData);

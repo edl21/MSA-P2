@@ -10,13 +10,13 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  width: 300px; /* Adjust the width as per your requirement */
+  width: 300px; 
   margin: auto;
 }
 
 .form-container .MuiTextField-root {
   width: 100%;
-  margin-bottom: 15px; /* This adds space between each TextField */
+  margin-bottom: 15px; 
 }
 
 .form-container .MuiSelect-root {
@@ -26,5 +26,5 @@
 
 .form-container .MuiFormControl-root {
   width: 100%;
-  margin-bottom: 15px; /* Adds space between each FormControl/Select */
+  margin-bottom: 15px; 
 }

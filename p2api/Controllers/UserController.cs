@@ -52,7 +52,7 @@ namespace p2api.Controllers
         {
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
 
-            if (user == null || user.Password != request.Password) // Replace this simple check with proper password hashing
+            if (user == null || user.Password != request.Password) 
             {
                 return Unauthorized();
             }

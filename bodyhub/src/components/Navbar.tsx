@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/dblogo.png";
 import "./Navbar.css";
-import { useAuth } from "../AuthContext"; // Import the auth context
+import { useAuth } from "../AuthContext"; 
 
 const NavBar: React.FC = () => {
-  const { user, logout } = useAuth(); // Access user and logout function from context
+  const { user, logout } = useAuth();
 
   return (
     <nav className="navbar-container">

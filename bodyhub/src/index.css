@@ -10,6 +10,6 @@ body {
   background: linear-gradient(to top left, #e0e1dd , #adb5bd 75%);
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: auto;
   min-height: 100vh;
 }
